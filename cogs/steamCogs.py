@@ -33,6 +33,7 @@ class Steam(commands.Cog):
                             And you can buy it from {gameURL}
                         '''
         except:
+            print(f'Check out {gameName}: it went wrong.')
             response = f'I searched for {gameName} but something went wrong. Fiddlesticks!'
             
         await ctx.send(response)

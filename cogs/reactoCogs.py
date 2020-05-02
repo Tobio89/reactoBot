@@ -72,7 +72,7 @@ class Basic(commands.Cog):
         await ctx.send(f'{editedQuestion}\n\n {random.choice(responses)}')
 
 
-    @commands.command(aliases=['erase'], brief='Erases one message by default.')
+    @commands.command(aliases=['erase'], brief='Erases one message by default.', hidden=True)
     async def clear(self, ctx, amount=2, pw=None):
         if amount > 5:
             if pw == 'begone':
@@ -97,7 +97,7 @@ class Basic(commands.Cog):
         else:
             await ctx.send('https://i.imgur.com/ZcSzUj6.mp4')
 
-    @commands.command(brief='Change the bot status')
+    @commands.command(brief='Change the bot status', hidden=True)
     async def status(self, ctx, status):
         statuses = {
             'idle' : discord.Status.idle,
@@ -107,8 +107,13 @@ class Basic(commands.Cog):
             'invisible': discord.Status.invisible
         }
         print(f'Changed status to {status}')
-        
-        await self.client.change_presence(status=statuses[status]) # This line is about statuses
+        if status == 'help':
+            await ctx.send('Status can be: online, idle, dnd, invisible and offline.')
+                
+        try:
+            await self.client.change_presence(status=statuses[status]) # This line is about statuses
+        except:
+            await ctx.send(f"Nope, I'm not being {status}. Try online, idle, dnd, invisible or offline")
 
     @commands.command(brief="Mess with what the bot is playing")
     async def activity(self, ctx, *, activity):
