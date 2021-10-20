@@ -2,7 +2,7 @@ import discord
 import random
 import os
 
-import setENV
+# import setENV
 
 from discord.ext import commands
 # from steamScrape import getSteamReviews
