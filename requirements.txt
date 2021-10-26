@@ -15,5 +15,5 @@ soupsieve==2.0.1
 starlette==0.13.6
 typing-extensions==3.7.4.2
 urllib3==1.26.2
-websockets==8.1
+websockets==9.1
 yarl==1.5.0
